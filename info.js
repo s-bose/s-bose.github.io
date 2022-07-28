@@ -29,7 +29,7 @@ let info = {
     linkedin: "https://www.linkedin.com/in/shiladitya-bose/",
     github: "https://github.com/s-bose",
     resume:
-      "https://github.com/s-bose/portfolio-template/blob/master/src/assets/pdfs/Resume.pdf"
+      "https://github.com/s-bose/s-bose.github.io/blob/master/src/assets/pdfs/Resume.pdf"
   },
   education: [
     {
