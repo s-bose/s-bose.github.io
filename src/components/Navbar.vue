@@ -25,7 +25,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span style="color: gray; font-size: 23px;"
+          <span style="color: gray; font-size: 23px"
             ><i class="fas fa-bars"></i
           ></span>
         </button>
@@ -50,7 +50,7 @@
                 >skills</a
               >
             </li>
-            <li class="nav-item mx-2 ">
+            <li class="nav-item mx-2">
               <a
                 class="nav-link"
                 href="/portfolio"
@@ -66,6 +66,14 @@
                 @click.prevent="$emit('scroll', 'contact')"
                 :class="{ 'text-light': nightMode }"
                 >contact</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link"
+                href="https://s-bose.github.io/blog"
+                :class="{ 'text-light': nightMode }"
+                >blog</a
               >
             </li>
             <li class="nav-item ml-2">

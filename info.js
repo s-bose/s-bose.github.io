@@ -57,7 +57,7 @@ let info = {
       degree: "Bachelors in Computer Science (B.Sc)",
       gpa: "8.0/10.0",
       description:
-        "Graduated from the University of Calcutta with a bachelors degree in Computer Science.",
+        "",
       skills: [
         "Software Engineering",
         "Algorithms",
