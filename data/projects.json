@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Arrest",
+        "description": "Declarative, type-safe HTTP client with schema validation using Pydantic. Supports retries, exception handling, and OpenAPI-based code generation.",
+        "tech_stack": ["Python", "Pydantic", "HTTPX", "OpenAPI"],
+        "github": "https://github.com/s-bose/arrest",
+        "pypi": "https://pypi.org/project/arrest",
+        "inProgress": false
+    },
+    {
+        "name": "Wandern",
+        "description": "CLI tool for managing database migrations with versioned SQL scripts and LLM-assisted revision generation.",
+        "tech_stack": ["Python", "Pydantic", "PostgreSQL", "SQLite", "Typer"],
+        "github": "https://github.com/s-bose/wandern",
+        "pypi": "https://pypi.org/project/wandern",
+        "inProgress": false
+    },
+    {
+        "name": "Schnell",
+        "description": "Single-threaded HTTP server implemented in Rust with declarative routing and custom response builders.",
+        "tech_stack": ["Rust", "HTTP"],
+        "github": "https://github.com/s-bose/schnell",
+        "inProgress": false
+    },
+    {
+        "name": "Wallpappr",
+        "description": "Tool for managing and setting wallpapers (customizable utility for desktop environments).",
+        "tech_stack": [],
+        "github": "https://github.com/s-bose/wallpappr",
+        "inProgress": false
+    },
+    {
+        "name": "OPWM",
+        "description": "Open-source project (details inferred from repository; likely related to window/session or process management utilities).",
+        "tech_stack": [],
+        "github": "https://github.com/s-bose/opwm",
+        "inProgress": false
+    },
+    {
+        "name": "Fermit",
+        "description": "Open-source project currently under active development.",
+        "tech_stack": [],
+        "github": "https://github.com/s-bose/fermit",
+        "inProgress": true
+    }
+]

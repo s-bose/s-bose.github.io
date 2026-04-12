@@ -1,0 +1,18 @@
+{
+    "name": "Shiladitya Bose",
+    "title": "Software Engineer II",
+    "location": "Kolkata, India",
+    "email": "shiladitya.bose@outlook.com",
+    "phone": "+91-98367-15551",
+    "bio": [
+        "Software engineer with 3+ years of experience building scalable, high-performance systems.",
+        "Experienced in backend architecture, agentic workflows, and distributed systems.",
+        "Strong track record of designing and delivering complex, production-grade platforms.",
+        "Passionate about open source and collaborative software development.",
+        "Focused on solving complex domain problems through clean, maintainable design."
+    ],
+    "links": {
+        "github": "https://github.com/s-bose",
+        "linkedin": "https://linkedin.com/in/shiladitya-bose"
+    }
+}

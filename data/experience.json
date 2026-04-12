@@ -1,0 +1,93 @@
+[
+    {
+        "company": "Raft.ai",
+        "role": "Software Engineer II",
+        "duration": "Nov 2022 - Present",
+        "location": "Remote (London, UK)",
+        "projects": [
+            {
+                "name": "Agentic Workflow Platform",
+                "description": "Built and deployed single-task and multi-agent workflows to execute dynamic business logic and orchestrate complex system interactions. Developed reusable agents and context-aware conversational systems for generative UI.",
+                "tech_stack": [
+                    "Python",
+                    "FastAPI",
+                    "OpenAI",
+                    "Agno",
+                    "Langwatch"
+                ]
+            },
+            {
+                "name": "Declarative Templating Engine",
+                "description": "Developed a configuration-driven data pipeline system with LLM-based config generation and Kafka-powered event-driven architecture for loosely coupled systems.",
+                "tech_stack": [
+                    "FastAPI",
+                    "Faststream",
+                    "Pydantic",
+                    "Kafka",
+                    "Aiven"
+                ]
+            },
+            {
+                "name": "Quotes and Rates Platform",
+                "description": "Built a platform for aggregating cargo transport rates and generating quotations. Optimized XML processing pipeline, reducing memory usage by ~96%. Implemented observability and CI/CD deployment pipelines.",
+                "tech_stack": [
+                    "Python",
+                    "FastAPI",
+                    "PostgreSQL",
+                    "Celery",
+                    "Docker",
+                    "Kubernetes",
+                    "GCP"
+                ]
+            },
+            {
+                "name": "Workflow Builder Framework",
+                "description": "Designed a template-driven framework to manage shipment integrations and accounts payable workflows with customizable data pipelines.",
+                "tech_stack": [
+                    "FastAPI",
+                    "MongoDB",
+                    "PostgreSQL",
+                    "gRPC",
+                    "React Flow"
+                ]
+            }
+        ]
+    },
+    {
+        "company": "Tata Consultancy Services",
+        "role": "Systems Engineer",
+        "duration": "Aug 2021 - Nov 2022",
+        "location": "Kolkata, India",
+        "projects": [
+            {
+                "name": "Automation Pipelines & Monitoring",
+                "description": "Built automation pipelines and cron jobs for system administration and server health reporting.",
+                "tech_stack": ["Python", "Celery", "Microsoft Azure"]
+            },
+            {
+                "name": "CMS Admin Portal",
+                "description": "Developed an admin and user management portal for a CMS backend and deployed it on Azure VM.",
+                "tech_stack": ["Flask", "SQLAlchemy", "Azure"]
+            }
+        ]
+    },
+    {
+        "company": "SleekSky LLC",
+        "role": "Python Developer Intern",
+        "duration": "Jan 2021 - Apr 2021",
+        "location": "Remote (San Francisco, USA)",
+        "projects": [
+            {
+                "name": "Headless CMS Backend",
+                "description": "Built backend services for a headless CMS platform and deployed as serverless functions using AWS Lambda.",
+                "tech_stack": [
+                    "FastAPI",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "AWS Lambda",
+                    "GitHub Actions"
+                ]
+            }
+        ]
+    }
+]

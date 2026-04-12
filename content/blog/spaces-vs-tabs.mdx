@@ -1,0 +1,73 @@
+---
+title: "Spaces vs. Tabs: The Indentation Debate Continues"
+date: "2024-04-08"
+description: "A deep dive into one of programming's oldest holy wars — and why tabs might just win."
+category: "OPINION"
+---
+
+Every programmer eventually faces it. You open a pull request, and before anyone reviews the logic, someone comments: *"Why are you using tabs?"* Or spaces. The war has raged for decades, and somehow, it still isn't over.
+
+## The Case for Spaces
+
+Spaces have won the popular vote. Python's PEP 8 recommends them. Most modern style guides default to them. The argument is simple: spaces look the same everywhere. Whether you're on VS Code, vim, GitHub's diff view, or a terminal — 4 spaces is always 4 spaces.
+
+```python
+def greet(name):
+    if name:
+        print(f"Hello, {name}")
+    else:
+        print("Hello, world")
+```
+
+With spaces, what you see is what everyone else sees. No surprises.
+
+## The Case for Tabs
+
+Tabs, however, have a compelling argument that often gets ignored: **semantic correctness**. A tab *means* one level of indentation. Its visual width is a display preference — and that's exactly the point.
+
+Using tabs means a developer who needs larger indentation for readability (say, width 4) and one who prefers compact code (width 2) can work on the same file without either compromising. Tabs respect that different humans have different eyes.
+
+```go
+func main() {
+	fmt.Println("Go uses tabs by default")
+	for i := 0; i < 3; i++ {
+		fmt.Println(i)
+	}
+}
+```
+
+Go, Rust (in some configs), and many systems-level languages default to tabs. These aren't accidents.
+
+## Accessibility
+
+This is the argument that should end the debate but rarely does: **tabs are more accessible**. Developers with visual impairments or dyslexia may configure their editor to display tabs as 1, 2, 8, or any width that works for them. Spaces remove that choice.
+
+When you enforce spaces, you enforce your visual preference on everyone else. When you use tabs, you let the environment adapt.
+
+## The Real Answer
+
+The real answer, of course, is **consistency**. Pick one, configure your linter (`eslint`, `prettier`, `editorconfig`), and never think about it again. The debate only hurts teams that haven't made a decision and stuck to it.
+
+That said — tabs are correct. I said what I said.
+
+## Tooling
+
+Use an `.editorconfig` file to enforce your choice across editors:
+
+```ini
+root = true
+
+[*]
+indent_style = tab
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+```
+
+This file is editor-agnostic, supported by VS Code, vim, JetBrains IDEs, and dozens more. There's no excuse for a team to have inconsistent indentation in 2024.
+
+---
+
+The debate won't end. But at least now you have the arguments to hold your ground.

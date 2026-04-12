@@ -1,0 +1,45 @@
+{
+    "programming_languages": [
+        "Golang",
+        "Python",
+        "C",
+        "C++",
+        "JavaScript",
+        "TypeScript",
+        "Rust"
+    ],
+    "frameworks_libraries": [
+        "FastAPI",
+        "Flask",
+        "React.js",
+        "NextJS",
+        "Faststream",
+        "SQLAlchemy",
+        "Agno",
+        "Pydantic AI",
+        "Kafka",
+        "Celery"
+    ],
+    "databases": [
+        "PostgreSQL",
+        "SQLLite",
+        "MongoDB",
+        "ElasticSearch",
+        "Redis",
+        "BigQuery",
+        "Supabase"
+    ],
+    "devops_tools": [
+        "Docker",
+        "Kubernetes",
+        "Google Cloud Platform",
+        "GitHub Actions",
+        "GitLab CI",
+        "Grafana",
+        "Sentry",
+        "Datadog",
+        "Terraform",
+        "ArgoCD",
+        "Prometheus"
+    ]
+}

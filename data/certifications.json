@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Getting Started with AWS Machine Learning",
+        "provider": "Coursera",
+        "certificate_id": "TWBDKHUHJ7UN"
+    },
+    {
+        "name": "Programming in C/C++",
+        "provider": "University of Groningen"
+    },
+    {
+        "name": "Deep Learning with PyTorch",
+        "provider": "Jovian",
+        "certificate_id": "MFQWCYJSGM"
+    }
+]
