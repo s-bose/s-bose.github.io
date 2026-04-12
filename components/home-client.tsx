@@ -57,12 +57,19 @@ export function HomeClient({ posts }: HomeClientProps) {
                             style={{ fontSize: "10px" }}
                         >
                             <span>■</span>
-                            <span>SYSTEM LIVE / TOKYO_NODE</span>
+                            <span>
+                                <a
+                                    href="https://github.com/s-bose"
+                                    target="_blank"
+                                >
+                                    @s-bose
+                                </a>
+                            </span>
                         </div>
 
                         {/* Heading */}
                         <h1 className="text-7xl font-black tracking-tight leading-[0.92] mb-6 text-foreground">
-                            My Portfolio
+                            Shiladitya Bose
                         </h1>
 
                         {/* Bio — white, not amber */}

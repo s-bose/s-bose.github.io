@@ -60,10 +60,10 @@ export function Nav() {
         >
             {/* Brand */}
             <Link
-                href="/"
+                href="https://github.com/s-bose"
                 className="text-xs font-black tracking-[0.2em] text-foreground uppercase hover:opacity-70 transition-opacity duration-200"
             >
-                ARCHIVE.01
+                @s-bose
             </Link>
 
             {/* Links + Toggle */}
