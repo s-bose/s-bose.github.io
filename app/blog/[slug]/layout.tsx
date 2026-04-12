@@ -8,7 +8,7 @@ export default function BlogPostLayout({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-2xl px-6">
+      <div className="mx-auto max-w-3xl px-4">
         <Nav />
         <main className="py-8">{children}</main>
         <Footer />
