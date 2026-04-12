@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { personal } from "@/lib/personal";
 
 const footerLinks = [
     { label: "RSS", href: "/rss.xml", external: false },
     {
         label: "GITHUB",
-        href: "https://github.com/s-bose",
+        href: personal.links.github,
         external: true,
     },
     {
         label: "SOURCE",
-        href: "https://github.com/s-bose/s-bose.github.io",
+        href: `${personal.links.github}/s-bose.github.io`,
         external: true,
     },
 ];

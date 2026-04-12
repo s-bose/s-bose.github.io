@@ -8,11 +8,12 @@ import { Monitor, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { personal } from "@/lib/personal";
 
 const navLinks = [
     { href: "/", label: "HOME" },
     { href: "/blog", label: "BLOG" },
-    { href: "https://github.com/s-bose", label: "DEPLOY", external: true },
+    { href: personal.links.github, label: "DEPLOY", external: true },
 ];
 
 function NavThemeToggle() {

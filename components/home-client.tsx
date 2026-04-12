@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-
 import { Download } from "lucide-react";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
@@ -9,8 +8,12 @@ import { ActivityWidgets } from "@/components/sections/activity-widgets";
 import { ProjectsList } from "@/components/sections/projects-list";
 import { BlogList } from "@/components/sections/blog-list";
 import { FeaturedImage } from "@/components/sections/featured-image";
+import { ExperienceSection } from "@/components/sections/experience-section";
+import { SkillsSection } from "@/components/sections/skills-section";
+import { EducationSection } from "@/components/sections/education-section";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/projects";
+import { personal } from "@/lib/personal";
 import type { BlogPostMeta } from "@/lib/blog";
 
 interface HomeClientProps {
@@ -58,26 +61,19 @@ export function HomeClient({ posts }: HomeClientProps) {
                         >
                             <span>■</span>
                             <span>
-                                <a
-                                    href="https://github.com/s-bose"
-                                    target="_blank"
-                                >
-                                    @s-bose
-                                </a>
+                                {personal.title.toUpperCase()} /{" "}
+                                {personal.location.toUpperCase()}
                             </span>
                         </div>
 
                         {/* Heading */}
                         <h1 className="text-7xl font-black tracking-tight leading-[0.92] mb-6 text-foreground">
-                            Shiladitya Bose
+                            My Portfolio
                         </h1>
 
-                        {/* Bio — white, not amber */}
+                        {/* Bio — real data, white text */}
                         <p className="text-sm leading-7 text-foreground/80 max-w-lg mb-8">
-                            I build high-performance systems that live in the
-                            void. Obsessed with terminal-centric workflows,
-                            minimalist architecture, and the intersection of raw
-                            utility and premium digital aesthetics.
+                            {personal.bio.slice(0, 3).join(" ")}
                         </p>
 
                         {/* Resume download */}
@@ -94,9 +90,24 @@ export function HomeClient({ posts }: HomeClientProps) {
                         <ActivityWidgets />
                     </motion.div>
 
+                    {/* ── Work experience ──────────────────────────── */}
+                    <motion.div variants={item}>
+                        <ExperienceSection />
+                    </motion.div>
+
                     {/* ── Selected projects ────────────────────────── */}
                     <motion.div variants={item}>
                         <ProjectsList projects={projects} />
+                    </motion.div>
+
+                    {/* ── Technical stack ──────────────────────────── */}
+                    <motion.div variants={item}>
+                        <SkillsSection />
+                    </motion.div>
+
+                    {/* ── Education ────────────────────────────────── */}
+                    <motion.div variants={item}>
+                        <EducationSection />
                     </motion.div>
 
                     {/* ── Latest intelligence (blog) ───────────────── */}

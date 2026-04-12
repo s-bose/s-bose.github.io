@@ -1,26 +1,12 @@
+import projectsData from "@/data/projects.json";
+
 export interface Project {
-  title: string;
-  description: string;
-  href?: string;
+    name: string;
+    description: string;
+    tech_stack: string[];
+    github: string;
+    pypi?: string;
+    inProgress: boolean;
 }
 
-export const projects: Project[] = [
-  {
-    title: "KREUZ_KERNEL",
-    description:
-      "A custom Rust-based microkernel designed for deterministic hardware performance.",
-    href: "#",
-  },
-  {
-    title: "NULL_VIRTUAL",
-    description:
-      "Headless CMS built for high-density documentation using Markdown-as-source.",
-    href: "#",
-  },
-  {
-    title: "SPECTRE_OS",
-    description:
-      "Visual experiment in minimalist UI for distributed terminal sessions.",
-    href: "#",
-  },
-];
+export const projects: Project[] = projectsData as Project[];
