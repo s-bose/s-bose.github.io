@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight, Github, Package } from "lucide-react";
+import { ArrowUpRight, Package } from "lucide-react";
+import { IconBrandGithub } from "@/components/icons/brand-github";
 import type { Project } from "@/lib/projects";
 
 const item: Variants = {
@@ -96,7 +97,7 @@ export function ProjectsList({ projects }: ProjectsListProps) {
                                     aria-label="GitHub"
                                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                                 >
-                                    <Github className="size-3.5" />
+                                    <IconBrandGithub className="size-3.5" />
                                 </a>
                                 <a
                                     href={project.github}
