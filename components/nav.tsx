@@ -8,16 +8,14 @@ import { Monitor, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { personal } from "@/lib/personal";
 
-const navLinks = [
-  { href: "/", label: "HOME" },
-  { href: "/blog", label: "BLOG" },
-];
+const homeLink = { href: "/", label: "HOME" };
+const blogLink = { href: "/blog", label: "BLOG" };
 
 const homeScrollLinks = [
   { href: "#experience", label: "EXPERIENCE" },
   { href: "#projects", label: "PROJECTS" },
+  { href: "#contact", label: "CONTACT" },
 ];
 
 function smoothScrollTo(id: string) {
@@ -63,12 +61,45 @@ function NavThemeToggle() {
 export function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const ids = homeScrollLinks.map((l) => l.href.slice(1));
+    const observers: IntersectionObserver[] = [];
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, [pathname]);
+
+  function scrollLinkClass(href: string) {
+    const id = href.slice(1);
+    const isActive = pathname === "/" && activeSection === id;
+    return cn(
+      "text-[11px] font-bold tracking-[0.15em] transition-colors duration-200",
+      isActive
+        ? "text-foreground underline underline-offset-4 decoration-foreground/30"
+        : "text-muted-foreground hover:text-foreground",
+    );
+  }
 
   return (
     <>
@@ -89,23 +120,40 @@ export function Nav() {
 
         {/* Links + Toggle */}
         <div className="flex items-center gap-5">
-          {navLinks.map((link, i) => (
-            <motion.div
-              key={link.href}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.1 + i * 0.06 }}
-            >
-              {link.external ? (
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[11px] font-bold tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors duration-200"
+          {[homeLink, ...homeScrollLinks, blogLink].map((link, i) => {
+            const isScrollLink = link.href.startsWith("#");
+            if (isScrollLink) {
+              return (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.1 + i * 0.06 }}
                 >
-                  {link.label}
-                </a>
-              ) : (
+                  <a
+                    href={pathname === "/" ? link.href : `/${link.href}`}
+                    onClick={
+                      pathname === "/"
+                        ? (e) => {
+                            e.preventDefault();
+                            smoothScrollTo(link.href.slice(1));
+                          }
+                        : undefined
+                    }
+                    className={scrollLinkClass(link.href)}
+                  >
+                    {link.label}
+                  </a>
+                </motion.div>
+              );
+            }
+            return (
+              <motion.div
+                key={link.href}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.1 + i * 0.06 }}
+              >
                 <Link
                   href={link.href}
                   className={cn(
@@ -117,26 +165,9 @@ export function Nav() {
                 >
                   {link.label}
                 </Link>
-              )}
-            </motion.div>
-          ))}{" "}
-          {homeScrollLinks.map((link) => (
-            <a
-              key={link.href}
-              href={pathname === "/" ? link.href : `/${link.href}`}
-              onClick={
-                pathname === "/"
-                  ? (e) => {
-                      e.preventDefault();
-                      smoothScrollTo(link.href.slice(1));
-                    }
-                  : undefined
-              }
-              className="text-[11px] font-bold tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
+              </motion.div>
+            );
+          })}
           <NavThemeToggle />
         </div>
       </motion.nav>
@@ -156,8 +187,28 @@ export function Nav() {
             @s-bose
           </Link>
           <div className="flex items-center gap-5">
-            {navLinks.map((link) =>
-              link.external ? null : (
+            {[homeLink, ...homeScrollLinks, blogLink].map((link) => {
+              const isScrollLink = link.href.startsWith("#");
+              if (isScrollLink) {
+                return (
+                  <a
+                    key={link.href}
+                    href={pathname === "/" ? link.href : `/${link.href}`}
+                    onClick={
+                      pathname === "/"
+                        ? (e) => {
+                            e.preventDefault();
+                            smoothScrollTo(link.href.slice(1));
+                          }
+                        : undefined
+                    }
+                    className={scrollLinkClass(link.href)}
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+              return (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -170,25 +221,8 @@ export function Nav() {
                 >
                   {link.label}
                 </Link>
-              ),
-            )}
-            {homeScrollLinks.map((link) => (
-              <a
-                key={link.href}
-                href={pathname === "/" ? link.href : `/${link.href}`}
-                onClick={
-                  pathname === "/"
-                    ? (e) => {
-                        e.preventDefault();
-                        smoothScrollTo(link.href.slice(1));
-                      }
-                    : undefined
-                }
-                className="text-[11px] font-bold tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
+              );
+            })}
             <NavThemeToggle />
           </div>
         </nav>

@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { ActivityWidgets } from "@/components/sections/activity-widgets";
 import { ProjectsList } from "@/components/sections/projects-list";
 import { BlogList } from "@/components/sections/blog-list";
+import { ContactSection } from "@/components/sections/contact-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { EducationSection } from "@/components/sections/education-section";
@@ -115,6 +116,11 @@ export function HomeClient({ posts }: HomeClientProps) {
           {/* ── Latest intelligence (blog) ───────────────── */}
           <motion.div variants={item}>
             <BlogList posts={posts} />
+          </motion.div>
+
+          {/* ── Contact ──────────────────────────────────── */}
+          <motion.div variants={item} id="contact">
+            <ContactSection />
           </motion.div>
         </motion.main>
 
