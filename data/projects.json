@@ -24,22 +24,22 @@
     },
     {
         "name": "Wallpappr",
-        "description": "Tool for managing and setting wallpapers (customizable utility for desktop environments).",
-        "tech_stack": [],
+        "description": "Cross-platform desktop application for managing and setting wallpapers.",
+        "tech_stack": ["Electron", "VueJS", "JavaScript"],
         "github": "https://github.com/s-bose/wallpappr",
         "inProgress": false
     },
     {
         "name": "OPWM",
-        "description": "Open-source project (details inferred from repository; likely related to window/session or process management utilities).",
-        "tech_stack": [],
+        "description": "Offline Password Manager - a dockerized offline application for managing password credentials.",
+        "tech_stack": ["Docker", "FastAPI", "Pydantic", "PostgreSQL", "VueJS"],
         "github": "https://github.com/s-bose/opwm",
         "inProgress": false
     },
     {
         "name": "Fermit",
-        "description": "Open-source project currently under active development.",
-        "tech_stack": [],
+        "description": "A policy-as-code library to write AuthZ policies in plain Python.",
+        "tech_stack": ["Python", "FastAPI", "Pydantic", "Click"],
         "github": "https://github.com/s-bose/fermit",
         "inProgress": true
     }

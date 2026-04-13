@@ -11,14 +11,16 @@
     "frameworks_libraries": [
         "FastAPI",
         "Flask",
+        "Pydantic",
+        "SQLAlchemy",
+        "Kafka",
+        "Faststream",
+        "Celery",
+        "Pydantic AI",
+        "Agno",
         "React.js",
         "NextJS",
-        "Faststream",
-        "SQLAlchemy",
-        "Agno",
-        "Pydantic AI",
-        "Kafka",
-        "Celery"
+        "Vue.js"
     ],
     "databases": [
         "PostgreSQL",
