@@ -1,15 +1,65 @@
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { formatDate } from "@/lib/format";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeKatex from "rehype-katex";
-import "katex/dist/katex.min.css";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkDirective from "remark-directive";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeKatex from "rehype-katex";
+import { visit } from "unist-util-visit";
+import { ContentTabs, Tab } from "@/components/mdx/content-tabs";
+
+const ADMONITION_TYPES = ["note", "tip", "warning", "danger", "info"];
+
+function remarkAdmonitions() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (tree: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    visit(tree, "containerDirective", (node: any) => {
+      const type: string = node.name;
+      if (!ADMONITION_TYPES.includes(type)) return;
+      const label = type.charAt(0).toUpperCase() + type.slice(1);
+      node.data = {
+        ...node.data,
+        hName: "div",
+        hProperties: {
+          ...node.data?.hProperties,
+          "data-admonition-name": type,
+          "data-admonition-label": label,
+          role: "note",
+        },
+      };
+    });
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mdxOptions: Record<string, any> = {
+  remarkPlugins: [
+    remarkGfm,
+    remarkMath,
+    remarkFrontmatter,
+    remarkDirective,
+    remarkAdmonitions,
+  ],
+  rehypePlugins: [
+    [
+      rehypePrettyCode,
+      {
+        theme: { dark: "github-dark", light: "github-light" },
+        keepBackground: false,
+      },
+    ],
+    rehypeKatex,
+  ],
+};
+
+const components = { ContentTabs, Tab };
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -71,24 +121,8 @@ export default async function BlogPostPage({ params }: Props) {
       <div className="prose max-w-none">
         <MDXRemote
           source={post.content}
-          options={{
-            mdxOptions: {
-              remarkPlugins: [remarkGfm, remarkMath],
-              rehypePlugins: [
-                [
-                  rehypePrettyCode,
-                  {
-                    theme: {
-                      dark: "github-dark",
-                      light: "github-light",
-                    },
-                    keepBackground: false,
-                  },
-                ],
-                rehypeKatex,
-              ],
-            },
-          }}
+          options={{ mdxOptions } as never}
+          components={components}
         />
       </div>
     </article>

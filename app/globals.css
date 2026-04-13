@@ -133,6 +133,154 @@ html {
   }
 }
 
+/* ── Admonitions (remark-admonition) ─────────────────────────────── */
+
+[data-admonition-name] {
+  position: relative;
+  margin: 1.25rem 0;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  border-left-width: 4px;
+  font-size: 0.875rem;
+}
+
+[data-admonition-name]::before {
+  content: attr(data-admonition-label);
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.375rem;
+}
+
+[data-admonition-name] p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+[data-admonition-name="note"] {
+  background-color: oklch(0.95 0.02 240 / 50%);
+  border-color: oklch(0.6 0.12 240);
+}
+[data-admonition-name="note"]::before {
+  color: oklch(0.45 0.12 240);
+}
+.dark [data-admonition-name="note"] {
+  background-color: oklch(0.25 0.04 240 / 40%);
+  border-color: oklch(0.55 0.1 240 / 60%);
+}
+.dark [data-admonition-name="note"]::before {
+  color: oklch(0.7 0.1 240);
+}
+
+[data-admonition-name="tip"] {
+  background-color: oklch(0.95 0.03 160 / 50%);
+  border-color: oklch(0.6 0.14 160);
+}
+[data-admonition-name="tip"]::before {
+  color: oklch(0.45 0.14 160);
+}
+.dark [data-admonition-name="tip"] {
+  background-color: oklch(0.25 0.04 160 / 40%);
+  border-color: oklch(0.55 0.1 160 / 60%);
+}
+.dark [data-admonition-name="tip"]::before {
+  color: oklch(0.7 0.1 160);
+}
+
+[data-admonition-name="warning"] {
+  background-color: oklch(0.97 0.04 80 / 50%);
+  border-color: oklch(0.7 0.15 80);
+}
+[data-admonition-name="warning"]::before {
+  color: oklch(0.5 0.15 80);
+}
+.dark [data-admonition-name="warning"] {
+  background-color: oklch(0.25 0.04 80 / 40%);
+  border-color: oklch(0.6 0.1 80 / 60%);
+}
+.dark [data-admonition-name="warning"]::before {
+  color: oklch(0.75 0.12 80);
+}
+
+[data-admonition-name="danger"] {
+  background-color: oklch(0.97 0.03 25 / 50%);
+  border-color: oklch(0.6 0.18 25);
+}
+[data-admonition-name="danger"]::before {
+  color: oklch(0.45 0.18 25);
+}
+.dark [data-admonition-name="danger"] {
+  background-color: oklch(0.25 0.04 25 / 40%);
+  border-color: oklch(0.55 0.12 25 / 60%);
+}
+.dark [data-admonition-name="danger"]::before {
+  color: oklch(0.7 0.15 25);
+}
+
+/* ── Code blocks (rehype-pretty-code dual-theme) ──────────────────── */
+
+/* Map shiki CSS variables to the active theme */
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+.dark code[data-theme*=" "],
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+[data-rehype-pretty-code-figure] {
+  margin: 1.25rem 0;
+}
+
+[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  border: 1px solid oklch(0.92 0.004 286.32);
+  padding: 1rem 1.25rem;
+  background-color: oklch(0.985 0 0);
+}
+.dark [data-rehype-pretty-code-figure] pre {
+  background-color: oklch(0.18 0.006 285.885);
+  border-color: oklch(1 0 0 / 10%);
+}
+
+[data-rehype-pretty-code-figure] code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+  line-height: 1.65;
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+  display: block;
+  min-height: 1em;
+}
+
+[data-rehype-pretty-code-title] {
+  font-size: 0.75rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  color: oklch(0.552 0.016 285.938);
+  padding: 0.5rem 1.25rem;
+  border: 1px solid oklch(0.92 0.004 286.32);
+  border-bottom: none;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: oklch(0.967 0.001 286.375);
+}
+.dark [data-rehype-pretty-code-title] {
+  color: oklch(0.705 0.015 286.067);
+  border-color: oklch(1 0 0 / 10%);
+  background-color: oklch(0.21 0.006 285.885);
+}
+.dark [data-rehype-pretty-code-title] + pre {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+[data-rehype-pretty-code-title] + pre {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
 /* ── Scrollbar ─────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
