@@ -34,7 +34,6 @@ export interface GardenBacklink {
   id: string;
   title: string;
   slug: string;
-  excerpt: string;
 }
 
 export interface GardenIndex {

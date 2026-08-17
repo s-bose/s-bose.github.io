@@ -205,12 +205,10 @@ function calcReadTime(plaintext: string): number {
   return Math.max(1, Math.round(plaintext.trim().split(/\s+/).length / 200));
 }
 
-// ─── forward links + backlink excerpts ──────────────────────────────────
+// ─── forward links + backlinks ──────────────────────────────────────────
 
 interface ScannedWikilink {
   target: string;
-  index: number;
-  length: number;
 }
 
 const ATTACHMENT_TARGET_RE = /\.[a-zA-Z0-9]{2,5}$/;
@@ -226,7 +224,7 @@ function scanWikilinks(bodyWithoutFences: string): ScannedWikilink[] {
   let match: RegExpExecArray | null;
   while ((match = re.exec(bodyWithoutFences))) {
     const parsed = parseWikilinkSyntax(match[0]);
-    if (parsed?.target) out.push({ target: parsed.target, index: match.index, length: match[0].length });
+    if (parsed?.target) out.push({ target: parsed.target });
   }
   return out;
 }
@@ -235,13 +233,6 @@ function pushBucket<T>(map: Map<string, T[]>, key: string, value: T): void {
   const bucket = map.get(key);
   if (bucket) bucket.push(value);
   else map.set(key, [value]);
-}
-
-function excerptAround(text: string, index: number, length: number, radius = 150): string {
-  const start = Math.max(0, index - radius);
-  const end = Math.min(text.length, index + length + radius);
-  const cleaned = cleanWikilinkSyntax(text.slice(start, end)).replace(/\s+/g, " ").trim();
-  return `${start > 0 ? "…" : ""}${cleaned}${end < text.length ? "…" : ""}`;
 }
 
 // ─── main build ──────────────────────────────────────────────────────────
@@ -411,10 +402,7 @@ function buildIndex(files: WalkedFile[], assets: WalkedAsset[]): GardenIndex {
       if (seenTargets.has(pairKey)) continue; // one backlink entry per (source, target) pair
       seenTargets.add(pairKey);
 
-      const excerpt = excerptAround(stripFences(note.raw), link.index, link.length);
-      const list = backlinks.get(resolution.id) ?? [];
-      list.push({ id: note.id, title: note.title, slug: note.slug, excerpt });
-      backlinks.set(resolution.id, list);
+      pushBucket(backlinks, resolution.id, { id: note.id, title: note.title, slug: note.slug });
     }
   }
 
