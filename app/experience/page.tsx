@@ -56,11 +56,18 @@ export default function ExperiencePage() {
                       <p className="text-xs font-semibold text-foreground">
                         {project.name}
                       </p>
-                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed max-w-lg">
-                        {project.description}
-                      </p>
+                      <div className="mt-1 space-y-1.5 max-w-lg">
+                        {project.description.map((line, i) => (
+                          <p
+                            key={i}
+                            className="text-xs text-muted-foreground leading-relaxed"
+                          >
+                            {line}
+                          </p>
+                        ))}
+                      </div>
                       {project.tech_stack.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 mt-2.5">
+                        <div className="flex flex-wrap gap-1.5 mt-2.5 max-w-lg">
                           {project.tech_stack.map((t) => (
                             <TechTag key={t} label={t} />
                           ))}

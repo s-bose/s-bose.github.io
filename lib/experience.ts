@@ -2,7 +2,7 @@ import experienceData from "@/data/experience.json";
 
 export interface ExperienceProject {
     name: string;
-    description: string;
+    description: string[];
     tech_stack: string[];
 }
 

@@ -1,47 +1,64 @@
 {
     "programming_languages": [
-        "Golang",
         "Python",
-        "C",
-        "C++",
-        "JavaScript",
         "TypeScript",
-        "Rust"
+        "JavaScript",
+        "Go",
+        "C++",
+        "Rust",
+        "SQL"
     ],
-    "frameworks_libraries": [
+    "frameworks_apis": [
         "FastAPI",
         "Flask",
+        "Faststream",
         "Pydantic",
         "SQLAlchemy",
-        "Kafka",
-        "Faststream",
         "Celery",
-        "Pydantic AI",
-        "Agno",
-        "React.js",
-        "NextJS",
-        "Vue.js"
+        "React",
+        "React Flow",
+        "Next.js",
+        "Vue.js",
+        "REST",
+        "gRPC"
     ],
-    "databases": [
+    "ai_llm": [
+        "Anthropic",
+        "OpenAI",
+        "Gemini",
+        "Agno",
+        "AG-UI",
+        "MCP",
+        "Pydantic AI",
+        "Langwatch",
+        "Claude Code",
+        "TensorFlow",
+        "PyTorch"
+    ],
+    "data_messaging": [
         "PostgreSQL",
-        "SQLLite",
+        "MySQL",
+        "SQLite",
         "MongoDB",
         "ElasticSearch",
         "Redis",
         "BigQuery",
-        "Supabase"
+        "Kafka",
+        "RabbitMQ"
     ],
-    "devops_tools": [
+    "infrastructure": [
+        "GCP",
+        "AWS",
+        "Azure",
         "Docker",
         "Kubernetes",
-        "Google Cloud Platform",
-        "GitHub Actions",
-        "GitLab CI",
-        "Grafana",
-        "Sentry",
-        "Datadog",
+        "Helm",
         "Terraform",
         "ArgoCD",
-        "Prometheus"
+        "GitLab CI",
+        "GitHub Actions",
+        "Grafana",
+        "Sentry",
+        "Datadog"
     ]
 }

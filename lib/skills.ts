@@ -2,18 +2,20 @@ import skillsData from "@/data/skills.json";
 
 export interface Skills {
   programming_languages: string[];
-  frameworks_libraries: string[];
-  databases: string[];
-  devops_tools: string[];
+  frameworks_apis: string[];
+  ai_llm: string[];
+  data_messaging: string[];
+  infrastructure: string[];
 }
 
 export const skills: Skills = skillsData;
 
 export const skillCategoryLabels: Record<keyof Skills, string> = {
   programming_languages: "LANGUAGES",
-  frameworks_libraries: "FRAMEWORKS & LIBRARIES",
-  databases: "DATABASES",
-  devops_tools: "DEVOPS & TOOLING",
+  frameworks_apis: "FRAMEWORKS & APIS",
+  ai_llm: "AI / LLM",
+  data_messaging: "DATA & MESSAGING",
+  infrastructure: "INFRASTRUCTURE",
 };
 
 const _skillCategoryMap: Record<string, keyof Skills> = {};
@@ -25,9 +27,10 @@ const _skillCategoryMap: Record<string, keyof Skills> = {};
 
 const _tagColors: Record<keyof Skills, string> = {
   programming_languages: "border-violet-500/40 text-violet-400",
-  frameworks_libraries: "border-emerald-500/40 text-emerald-400",
-  databases: "border-amber-500/40 text-amber-400",
-  devops_tools: "border-sky-500/40 text-sky-400",
+  frameworks_apis: "border-emerald-500/40 text-emerald-400",
+  ai_llm: "border-rose-500/40 text-rose-400",
+  data_messaging: "border-amber-500/40 text-amber-400",
+  infrastructure: "border-sky-500/40 text-sky-400",
 };
 
 export function getTagColorClass(skill: string): string {

@@ -1,4 +1,6 @@
 import { BookOpen, Gamepad2 } from "lucide-react";
+import { activity, type ActivityType } from "@/lib/activity";
+import { cn } from "@/lib/utils";
 
 function SpotifyIcon({ className }: { className?: string }) {
   return (
@@ -10,6 +12,18 @@ function SpotifyIcon({ className }: { className?: string }) {
 
 const CONTENT_HEIGHT = 152;
 
+const ICONS: Record<ActivityType, React.ComponentType<{ className?: string }>> = {
+  spotify: SpotifyIcon,
+  reading: BookOpen,
+  steam: Gamepad2,
+};
+
+const LABEL_COLORS: Record<ActivityType, string> = {
+  spotify: "text-green-500",
+  reading: "text-amber-500",
+  steam: "text-sky-400",
+};
+
 export function ActivityWidgets() {
   return (
     <section className="py-8 border-t border-b border-border">
@@ -17,101 +31,47 @@ export function ActivityWidgets() {
         Activities
       </p>
       <div className="grid grid-cols-3 gap-4">
-        {/* ── Spotify ── */}
-        <a
-          href="https://open.spotify.com/track/5B8N5rPOmTVVGpuBMK2Vby"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-lg border border-border overflow-hidden flex flex-col hover:opacity-80 transition-opacity duration-200"
-        >
-          <div
-            className="w-full shrink-0 overflow-hidden bg-muted"
-            style={{ height: CONTENT_HEIGHT }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://i.discogs.com/9CpNNr6MFo9YBD6LqAV3I2Qb-ENkxMMNtkFkYHMNA3c/rs:fit/g:sm/q:90/h:600/w:596/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM1NzMz/NDUtMTY5NDQwNjg5/NC0xOTgzLmpwZWc.jpeg"
-              alt="Teen Idle"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="flex flex-col gap-0.5 px-3 py-2.5">
-            <span className="flex items-center gap-1.5 text-[9px] tracking-[0.2em] text-green-500 uppercase">
-              <SpotifyIcon className="size-2.5 shrink-0" />
-              Spotify
-            </span>
-            <p className="text-xs font-semibold text-foreground leading-snug line-clamp-1">
-              Teen Idle
-            </p>
-            <p className="text-[10px] text-muted-foreground line-clamp-1">
-              Marina
-            </p>
-          </div>
-        </a>
-
-        {/* ── Books ── */}
-        <a
-          href="https://www.goodreads.com/book/show/18143977-all-the-light-we-cannot-see"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-lg border border-border overflow-hidden flex flex-col hover:opacity-80 transition-opacity duration-200"
-        >
-          <div
-            className="w-full shrink-0 overflow-hidden bg-muted"
-            style={{ height: CONTENT_HEIGHT }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://covers.openlibrary.org/b/isbn/9781476746586-L.jpg"
-              alt="All the Light We Cannot See"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="flex flex-col gap-0.5 px-3 py-2.5">
-            <span className="flex items-center gap-1.5 text-[9px] tracking-[0.2em] text-amber-500 uppercase">
-              <BookOpen className="size-2.5 shrink-0" />
-              Reading
-            </span>
-            <p className="text-xs font-semibold text-foreground leading-snug line-clamp-1">
-              All the Light We Cannot See
-            </p>
-            <p className="text-[10px] text-muted-foreground line-clamp-1">
-              Anthony Doerr
-            </p>
-          </div>
-        </a>
-
-        {/* ── Steam ── */}
-        <a
-          href="https://store.steampowered.com/app/1259420/Days_Gone/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-lg border border-border overflow-hidden flex flex-col hover:opacity-80 transition-opacity duration-200"
-        >
-          <div
-            className="w-full shrink-0 overflow-hidden bg-muted"
-            style={{ height: CONTENT_HEIGHT }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://cdn.akamai.steamstatic.com/steam/apps/1259420/header.jpg"
-              alt="Days Gone"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="flex flex-col gap-0.5 px-3 py-2.5">
-            <span className="flex items-center gap-1.5 text-[9px] tracking-[0.2em] text-sky-400 uppercase">
-              <Gamepad2 className="size-2.5 shrink-0" />
-              Steam
-            </span>
-            <p className="text-xs font-semibold text-foreground leading-snug line-clamp-1">
-              Days Gone
-            </p>
-            <p className="text-[10px] text-muted-foreground line-clamp-1">
-              Bend Studio
-            </p>
-          </div>
-        </a>
+        {activity.map((item) => {
+          const Icon = ICONS[item.type];
+          return (
+            <a
+              key={item.type}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-border overflow-hidden flex flex-col hover:opacity-80 transition-opacity duration-200"
+            >
+              <div
+                className="w-full shrink-0 overflow-hidden bg-muted"
+                style={{ height: CONTENT_HEIGHT }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <div className="flex flex-col gap-0.5 px-3 py-2.5">
+                <span
+                  className={cn(
+                    "flex items-center gap-1.5 text-[9px] tracking-[0.2em] uppercase",
+                    LABEL_COLORS[item.type],
+                  )}
+                >
+                  <Icon className="size-2.5 shrink-0" />
+                  {item.label}
+                </span>
+                <p className="text-xs font-semibold text-foreground leading-snug line-clamp-1">
+                  {item.title}
+                </p>
+                <p className="text-[10px] text-muted-foreground line-clamp-1">
+                  {item.subtitle}
+                </p>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </section>
   );

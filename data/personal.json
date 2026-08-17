@@ -1,15 +1,14 @@
 {
     "name": "Shiladitya Bose",
-    "title": "Software Engineer II",
-    "location": "Mumbai, India",
+    "title": "Software Engineer",
+    "location": "India · Open to EU Relocation",
     "email": "shiladitya.bose@outlook.com",
     "phone": "+91-98367-15551",
     "bio": [
-        "Software engineer with 3+ years of experience building scalable, high-performance systems.",
-        "Experienced in backend architecture, agentic workflows, and distributed systems.",
-        "Strong track record of designing and delivering complex, production-grade platforms.",
-        "Passionate about open source and collaborative software development.",
-        "Focused on solving complex domain problems through clean, maintainable design."
+        "Software engineer with 5+ years building and owning production backend systems end to end.",
+        "Currently working at Raft.ai building AI vertical for logistics and supply chain.",
+        "Published two open-source Python packages and active as a maintainer.",
+        "Love building cool shit, reading books, gaming and procrastinating."
     ],
     "links": {
         "github": "https://github.com/s-bose",

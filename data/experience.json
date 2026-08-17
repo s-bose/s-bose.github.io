@@ -6,43 +6,60 @@
         "location": "Remote (London, UK)",
         "projects": [
             {
-                "name": "Agentic Workflow Platform",
-                "description": "Built and deployed single-task and multi-agent workflows to execute dynamic business logic and orchestrate complex system interactions. Developed reusable agents and context-aware conversational systems for generative UI.",
+                "name": "Agent Platform (GenAI)",
+                "description": [
+                    "Built the shared control plane for AI agents, tools, knowledge bases and MCP servers, and orchestrated multi-agent workflows on Anthropic, and OpenAI models that execute customer SOPs, analyse documents, flag exceptions and suggest actions through chat and generative UI.",
+                    "Helped re-platform to an event-driven microservices architecture that enabled company-wide adoption of agentic workflows, shipped to GCP on Kubernetes with Helm, Terraform, ArgoCD and GitLab CI at 80% test coverage, with observability via Grafana and Sentry."
+                ],
                 "tech_stack": [
                     "Python",
                     "FastAPI",
+                    "Anthropic",
                     "OpenAI",
                     "Agno",
-                    "Langwatch"
+                    "MCP",
+                    "AG-UI",
+                    "Kafka",
+                    "Faststream",
+                    "GCP",
+                    "Kubernetes",
+                    "GitLab CI"
                 ]
             },
             {
-                "name": "Declarative Templating Engine",
-                "description": "Developed a configuration-driven data pipeline system with LLM-based config generation and Kafka-powered event-driven architecture for loosely coupled systems.",
+                "name": "Config-Driven ETL Engine",
+                "description": [
+                    "Designed a config-driven ETL engine with a declarative UI that chains source components into custom inbound data flows, hydrating a single auditable form through a Kafka pipeline before pushing it to the customer's TMS; added agents to assist with config generation from prompts."
+                ],
                 "tech_stack": [
                     "FastAPI",
                     "Faststream",
                     "Pydantic",
-                    "Kafka",
-                    "Aiven"
+                    "Pydantic AI",
+                    "Kafka"
                 ]
             },
             {
                 "name": "Quotes and Rates Platform",
-                "description": "Built a platform for aggregating cargo transport rates and generating quotations. Optimized XML processing pipeline, reducing memory usage by ~96%. Implemented observability and CI/CD deployment pipelines.",
+                "description": [
+                    "Built a quotes and rates platform implementing cost, surcharge and rebate logic from the ground up to generate any-to-any shipping quotes with full breakdowns for Toll Group and EmoTrans; cut peak memory from 8GB to 300MB (96%) and raised XML rate-processing throughput using asynchronous Celery workers and streamed parallel parsing."
+                ],
                 "tech_stack": [
                     "Python",
                     "FastAPI",
                     "PostgreSQL",
+                    "SQLAlchemy",
                     "Celery",
-                    "Docker",
+                    "RabbitMQ",
                     "Kubernetes",
                     "GCP"
                 ]
             },
             {
-                "name": "Workflow Builder Framework",
-                "description": "Designed a template-driven framework to manage shipment integrations and accounts payable workflows with customizable data pipelines.",
+                "name": "Workflow Builder & Response Parser",
+                "description": [
+                    "Centralised shipment push across TMS integrations into a graph-based workflow builder that lets customers define their own workflows visually, backed by a template-driven response-parser service that maps unstructured third-party API responses onto client-defined schemas."
+                ],
                 "tech_stack": [
                     "FastAPI",
                     "MongoDB",
@@ -61,30 +78,36 @@
         "projects": [
             {
                 "name": "Automation Pipelines & Monitoring",
-                "description": "Built automation pipelines and cron jobs for system administration and server health reporting.",
-                "tech_stack": ["Python", "Celery", "Microsoft Azure"]
+                "description": [
+                    "Built Python automation pipelines and scheduled jobs for system administration and server-health reporting."
+                ],
+                "tech_stack": ["Python", "Celery", "Azure"]
             },
             {
-                "name": "CMS Admin Portal",
-                "description": "Developed an admin and user management portal for a CMS backend and deployed it on Azure VM.",
+                "name": "CMS User Management Portal",
+                "description": [
+                    "Built an interactive user management portal for a CMS backend, hosted on Azure."
+                ],
                 "tech_stack": ["Flask", "SQLAlchemy", "Azure"]
             }
         ]
     },
     {
         "company": "SleekSky LLC",
-        "role": "Python Developer Intern",
+        "role": "Python Developer, Internship",
         "duration": "Jan 2021 - Apr 2021",
         "location": "Remote (San Francisco, USA)",
         "projects": [
             {
                 "name": "Headless CMS Backend",
-                "description": "Built backend services for a headless CMS platform and deployed as serverless functions using AWS Lambda.",
+                "description": [
+                    "Developed the backend for a headless CMS platform, deployed as AWS Lambda serverless functions via GitHub Actions."
+                ],
                 "tech_stack": [
                     "FastAPI",
                     "PostgreSQL",
                     "MongoDB",
-                    "AWS Lambda",
+                    "AWS",
                     "GitHub Actions"
                 ]
             }

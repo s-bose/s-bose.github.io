@@ -4,7 +4,7 @@
         "institution": "University of Calcutta",
         "location": "Kolkata, India",
         "year": "2021",
-        "details": "Worked on brain MRI image segmentation using U-Net CNN architecture (TensorFlow), achieving ~70% accuracy on BraTS 2020 dataset."
+        "details": "Thesis: computer vision research building a custom U-Net CNN in TensorFlow to detect brain tumours from MRI scans, achieving ~70% test accuracy on the BraTS 2020 dataset."
     },
     {
         "degree": "B.Sc in Computer Science",

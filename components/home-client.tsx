@@ -6,7 +6,6 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ActivityWidgets } from "@/components/sections/activity-widgets";
 import { ProjectsList } from "@/components/sections/projects-list";
-import { BlogList } from "@/components/sections/blog-list";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
 import { SkillsSection } from "@/components/sections/skills-section";
@@ -14,11 +13,6 @@ import { EducationSection } from "@/components/sections/education-section";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/projects";
 import { personal } from "@/lib/personal";
-import type { BlogPostMeta } from "@/lib/blog";
-
-interface HomeClientProps {
-  posts: BlogPostMeta[];
-}
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -40,7 +34,7 @@ const item: Variants = {
   },
 };
 
-export function HomeClient({ posts }: HomeClientProps) {
+export function HomeClient() {
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-4">
@@ -72,14 +66,14 @@ export function HomeClient({ posts }: HomeClientProps) {
             </h1>
 
             {/* Bio — real data, white text */}
-            <p className="text-sm leading-7 text-foreground/80 max-w-lg mb-8">
-              {personal.bio.slice(0, 3).join(" ")}
+            <p className="text-sm leading-7 text-foreground/80 max-w-lg mb-8 whitespace-pre-line">
+              {personal.bio.join("\n")}
             </p>
 
             {/* Resume download */}
             <Button variant="outline" size="sm" asChild>
               <a
-                href="/data/resume.pdf"
+                href="/data/Resume.pdf"
                 download="Shiladitya Bose - Resume.pdf"
               >
                 <Download className="size-3.5" />
@@ -111,11 +105,6 @@ export function HomeClient({ posts }: HomeClientProps) {
           {/* ── Education ────────────────────────────────── */}
           <motion.div variants={item}>
             <EducationSection />
-          </motion.div>
-
-          {/* ── Latest intelligence (blog) ───────────────── */}
-          <motion.div variants={item}>
-            <BlogList posts={posts} />
           </motion.div>
 
           {/* ── Contact ──────────────────────────────────── */}

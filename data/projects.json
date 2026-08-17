@@ -1,7 +1,7 @@
 [
     {
         "name": "Arrest",
-        "description": "Declarative, type-safe HTTP client with schema validation using Pydantic. Supports retries, exception handling, and OpenAPI-based code generation.",
+        "description": "Type-safe declarative HTTP client with automatic Pydantic schema validation, retries, exception handling, and code generation from an OpenAPI specification.",
         "tech_stack": ["Python", "Pydantic", "HTTPX", "OpenAPI"],
         "github": "https://github.com/s-bose/arrest",
         "pypi": "https://pypi.org/project/arrest",
@@ -9,15 +9,22 @@
     },
     {
         "name": "Wandern",
-        "description": "CLI tool for managing database migrations with versioned SQL scripts and LLM-assisted revision generation.",
-        "tech_stack": ["Python", "Pydantic", "PostgreSQL", "SQLite", "Typer"],
+        "description": "CLI tool to create, apply and manage versioned SQL migrations, supporting SQLite, PostgreSQL and MySQL, with LLM-assisted revision generation.",
+        "tech_stack": [
+            "Python",
+            "Typer",
+            "Pydantic AI",
+            "SQLite",
+            "PostgreSQL",
+            "MySQL"
+        ],
         "github": "https://github.com/s-bose/wandern",
         "pypi": "https://pypi.org/project/wandern",
         "inProgress": false
     },
     {
         "name": "Schnell",
-        "description": "Single-threaded HTTP server implemented in Rust with declarative routing and custom response builders.",
+        "description": "HTTP server implemented from scratch in Rust with declarative routing, handlers and response builders.",
         "tech_stack": ["Rust", "HTTP"],
         "github": "https://github.com/s-bose/schnell",
         "inProgress": false
@@ -25,14 +32,14 @@
     {
         "name": "Wallpappr",
         "description": "Cross-platform desktop application for managing and setting wallpapers.",
-        "tech_stack": ["Electron", "VueJS", "JavaScript"],
+        "tech_stack": ["Electron", "Vue.js", "JavaScript"],
         "github": "https://github.com/s-bose/wallpappr",
         "inProgress": false
     },
     {
         "name": "OPWM",
         "description": "Offline Password Manager - a dockerized offline application for managing password credentials.",
-        "tech_stack": ["Docker", "FastAPI", "Pydantic", "PostgreSQL", "VueJS"],
+        "tech_stack": ["Docker", "FastAPI", "Pydantic", "PostgreSQL", "Vue.js"],
         "github": "https://github.com/s-bose/opwm",
         "inProgress": false
     },

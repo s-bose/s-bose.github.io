@@ -10,7 +10,11 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 const homeLink = { href: "/", label: "HOME" };
-const blogLink = { href: "/blog", label: "BLOG" };
+const gardenLink = {
+  href: "https://s-bose.github.io/garden",
+  label: "GARDEN",
+  external: true,
+};
 
 const homeScrollLinks = [
   { href: "#experience", label: "EXPERIENCE" },
@@ -120,7 +124,7 @@ export function Nav() {
 
         {/* Links + Toggle */}
         <div className="flex items-center gap-5">
-          {[homeLink, ...homeScrollLinks, blogLink].map((link, i) => {
+          {[homeLink, ...homeScrollLinks, gardenLink].map((link, i) => {
             const isScrollLink = link.href.startsWith("#");
             if (isScrollLink) {
               return (
@@ -156,6 +160,9 @@ export function Nav() {
               >
                 <Link
                   href={link.href}
+                  {...("external" in link && link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className={cn(
                     "text-[11px] font-bold tracking-[0.15em] transition-colors duration-200",
                     pathname === link.href
@@ -187,7 +194,7 @@ export function Nav() {
             @s-bose
           </Link>
           <div className="flex items-center gap-5">
-            {[homeLink, ...homeScrollLinks, blogLink].map((link) => {
+            {[homeLink, ...homeScrollLinks, gardenLink].map((link) => {
               const isScrollLink = link.href.startsWith("#");
               if (isScrollLink) {
                 return (

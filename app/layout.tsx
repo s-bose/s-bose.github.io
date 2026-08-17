@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shiladitya Bose | Portfolio",
-  description: "Personal portfolio and blog.",
+  title: "Shiladitya Bose | Backend Engineer",
+  description:
+    "Backend engineer with 5+ years building and owning production systems end to end, most recently the infrastructure behind AI agents for a logistics automation platform.",
 };
 
 export default function RootLayout({

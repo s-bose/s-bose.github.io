@@ -1,0 +1,30 @@
+
+[
+    {
+        "type": "spotify",
+        "label": "Spotify",
+        "href": "https://open.spotify.com/track/5ruzrDWcT0vuJIOMW7gMnW",
+        "image": "https://i.discogs.com/JSvoLvGxGluJIZgM6vMO74oLnVcR8W7zFhiHxvz802Q/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE2NzM2/NjQ2LTE2MDk1MzI1/MTItMzA5My5qcGVn.jpeg",
+        "alt": "The Adults Are Talking",
+        "title": "The Adults Are Talking",
+        "subtitle": "The Strokes"
+    },
+    {
+        "type": "reading",
+        "label": "Reading",
+        "href": "https://www.goodreads.com/book/show/13623848-the-song-of-achilles",
+        "image": "https://covers.openlibrary.org/b/isbn/9780062060624-L.jpg",
+        "alt": "The Song Of Achilles",
+        "title": "The Song Of Achilles",
+        "subtitle": "Madeline Miller"
+    },
+    {
+        "type": "steam",
+        "label": "Steam",
+        "href": "https://store.steampowered.com/app/3751950/Assassins_Creed_Black_Flag_Resynced/",
+        "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3751950/9b046115b1663a4be2b252712328e4f6c162da68/header.jpg",
+        "alt": "Assassin's Creed Black Flag Resynced",
+        "title": "Assassin's Creed Black Flag Resynced",
+        "subtitle": "Ubisoft"
+    }
+]
