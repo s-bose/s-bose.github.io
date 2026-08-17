@@ -1,0 +1,26 @@
+---
+title: "Kitchen Sink (MDX)"
+tags: [meta, test]
+description: "Regression fixture for the .mdx pipeline — checks that blockJS:false preserves JSX expression attributes."
+---
+
+This note is hand-authored `.mdx`, not exported from Obsidian. It exercises
+the full-MDX pipeline: JSX components and expression-valued attributes.
+
+<ContentTabs>
+  <Tab label="First">
+    A tab with an inline JSX expression attribute — `next-mdx-remote@6`
+    defaults to stripping these (`blockJS: true`), so seeing this render
+    correctly confirms `blockJS: false` is wired up.
+
+    <div style={{ padding: "0.75rem", border: "1px dashed var(--border)", borderRadius: "0.5rem" }}>
+      If this box has a dashed border and padding, the `style={{...}}`
+      expression attribute survived compilation.
+    </div>
+  </Tab>
+  <Tab label="Second">
+    Second tab content.
+  </Tab>
+</ContentTabs>
+
+Wikilinks still work in `.mdx` mode: [[companion]].

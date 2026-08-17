@@ -41,13 +41,16 @@ jobs:
                   node-version: "20"
                   cache: "pnpm"
             - name: Setup Pages
+              # NOTE: static_site_generator: next is intentionally NOT set here.
+              # configure-pages only recognizes next.config.{js,cjs,mjs}; since
+              # this repo uses next.config.ts, it would fall back to writing a
+              # blank next.config.js (see actions/configure-pages source), which
+              # loads *before* next.config.ts and silently discards output:
+              # "export", images.unoptimized, and turbopack.root. Those are all
+              # committed directly in next.config.ts instead. basePath is moot
+              # here since this is a user site (s-bose.github.io), not a
+              # project-page site, so the injected basePath was always "".
               uses: actions/configure-pages@v5
-              with:
-                  # Automatically inject basePath in your Next.js configuration file and disable
-                  # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-                  #
-                  # You may remove this line if you want to manage the configuration yourself.
-                  static_site_generator: next
             - name: Restore cache
               uses: actions/cache@v4
               with:
@@ -61,7 +64,7 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
             - name: Build with Next.js
-              run: pnpm next build
+              run: pnpm build
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
