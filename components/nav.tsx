@@ -7,20 +7,24 @@ import { useTheme } from "next-themes";
 import { Monitor, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useActiveIntersection } from "@/hooks/use-active-intersection";
 import { useEffect, useState } from "react";
 
 const homeLink = { href: "/", label: "HOME" };
-const gardenLink = {
-  href: "https://s-bose.github.io/garden",
-  label: "GARDEN",
-  external: true,
-};
+const gardenLink = { href: "/garden", label: "GARDEN" };
 
 const homeScrollLinks = [
   { href: "#experience", label: "EXPERIENCE" },
   { href: "#projects", label: "PROJECTS" },
   { href: "#contact", label: "CONTACT" },
 ];
+
+// "/" only matches the home page exactly; every other link matches its
+// own path and any nested route under it (e.g. GARDEN stays highlighted
+// while reading a note at /garden/notes/x).
+function isNavLinkActive(pathname: string, href: string): boolean {
+  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}
 
 function smoothScrollTo(id: string) {
   const el = document.getElementById(id);
@@ -65,34 +69,16 @@ function NavThemeToggle() {
 export function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const activeSection = useActiveIntersection(
+    pathname === "/" ? homeScrollLinks.map((l) => l.href.slice(1)) : [],
+    { rootMargin: "-40% 0px -55% 0px" },
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    if (pathname !== "/") return;
-    const ids = homeScrollLinks.map((l) => l.href.slice(1));
-    const observers: IntersectionObserver[] = [];
-
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
-        { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
-  }, [pathname]);
 
   function scrollLinkClass(href: string) {
     const id = href.slice(1);
@@ -160,12 +146,9 @@ export function Nav() {
               >
                 <Link
                   href={link.href}
-                  {...("external" in link && link.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
                   className={cn(
                     "text-[11px] font-bold tracking-[0.15em] transition-colors duration-200",
-                    pathname === link.href
+                    isNavLinkActive(pathname, link.href)
                       ? "text-foreground underline underline-offset-4 decoration-foreground/30"
                       : "text-muted-foreground hover:text-foreground",
                   )}
@@ -221,7 +204,7 @@ export function Nav() {
                   href={link.href}
                   className={cn(
                     "text-[11px] font-bold tracking-[0.15em] transition-colors duration-200",
-                    pathname === link.href
+                    isNavLinkActive(pathname, link.href)
                       ? "text-foreground underline underline-offset-4 decoration-foreground/30"
                       : "text-muted-foreground hover:text-foreground",
                   )}
