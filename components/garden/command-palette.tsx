@@ -92,6 +92,9 @@ export function CommandPalette() {
           }}
         >
           <Dialog.Title className="sr-only">Search the garden</Dialog.Title>
+          <Dialog.Description className="sr-only">
+            Search notes by title, tag, or description. Use arrow keys to navigate results and Enter to open one.
+          </Dialog.Description>
           <div className="flex items-center gap-2 border-b border-border px-3 py-2.5">
             <Search className="size-4 text-muted-foreground shrink-0" />
             <input

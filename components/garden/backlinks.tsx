@@ -15,14 +15,9 @@ export function Backlinks({ backlinks }: { backlinks: GardenBacklink[] }) {
             <Link
               key={b.id}
               href={`/garden/${b.slug}`}
-              className="block py-3 group"
+              className="block py-3 text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
-              <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                {b.title}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                {b.excerpt}
-              </p>
+              {b.title}
             </Link>
           ))}
         </div>
