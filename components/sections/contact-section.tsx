@@ -1,42 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { Mail, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personal } from "@/lib/personal";
 import { IconBrandGithub } from "@/components/icons/brand-github";
 
+const FORMSPREE_FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
+
 export function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
-
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch(`https://formspree.io/f/placeholder`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (res.ok) {
-        setStatus("sent");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
+  const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID || "unconfigured");
 
   return (
     <section className="py-12">
@@ -86,84 +59,107 @@ export function ContactSection() {
         </div>
 
         {/* ── Contact form ─────────────────────────────── */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1.5">
-            <label
-              htmlFor="name"
-              className="text-[10px] tracking-[0.18em] uppercase text-muted-foreground"
-            >
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Your name"
-              className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <label
-              htmlFor="email"
-              className="text-[10px] tracking-[0.18em] uppercase text-muted-foreground"
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              value={form.email}
-              onChange={handleChange}
-              placeholder="you@example.com"
-              className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <label
-              htmlFor="message"
-              className="text-[10px] tracking-[0.18em] uppercase text-muted-foreground"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows={4}
-              value={form.message}
-              onChange={handleChange}
-              placeholder="What's on your mind?"
-              className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition resize-none"
-            />
-          </div>
-
-          <Button
-            type="submit"
-            size="sm"
-            disabled={status === "sending" || status === "sent"}
-            className="gap-2"
+        {state.succeeded ? (
+          <p className="text-sm text-foreground/80 leading-relaxed self-start">
+            Thanks for reaching out — I&apos;ll get back to you soon.
+          </p>
+        ) : (
+          <form
+            onSubmit={(e) => {
+              if (!FORMSPREE_FORM_ID) {
+                e.preventDefault();
+                return;
+              }
+              handleSubmit(e);
+            }}
+            className="space-y-4"
           >
-            <Send className="size-3.5" />
-            {status === "sending"
-              ? "Sending…"
-              : status === "sent"
-                ? "Sent!"
-                : "Send Message"}
-          </Button>
+            <div className="space-y-1.5">
+              <label
+                htmlFor="name"
+                className="text-[10px] tracking-[0.18em] uppercase text-muted-foreground"
+              >
+                Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="Your name"
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition"
+              />
+              <ValidationError
+                prefix="Name"
+                field="name"
+                errors={state.errors}
+                className="text-xs text-destructive"
+              />
+            </div>
 
-          {status === "error" && (
-            <p className="text-xs text-destructive mt-1">
-              Something went wrong. Please try again or email directly.
-            </p>
-          )}
-        </form>
+            <div className="space-y-1.5">
+              <label
+                htmlFor="email"
+                className="text-[10px] tracking-[0.18em] uppercase text-muted-foreground"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition"
+              />
+              <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+                className="text-xs text-destructive"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label
+                htmlFor="message"
+                className="text-[10px] tracking-[0.18em] uppercase text-muted-foreground"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={4}
+                placeholder="What's on your mind?"
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition resize-none"
+              />
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+                className="text-xs text-destructive"
+              />
+            </div>
+
+            <Button
+              type="submit"
+              size="sm"
+              disabled={state.submitting}
+              className="gap-2"
+            >
+              <Send className="size-3.5" />
+              {state.submitting ? "Sending…" : "Send Message"}
+            </Button>
+
+            {!FORMSPREE_FORM_ID && (
+              <p className="text-xs text-destructive mt-1">
+                Contact form is not configured yet.
+              </p>
+            )}
+          </form>
+        )}
       </div>
     </section>
   );

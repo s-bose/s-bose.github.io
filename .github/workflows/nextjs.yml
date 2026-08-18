@@ -64,6 +64,8 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
             - name: Build with Next.js
+              env:
+                  NEXT_PUBLIC_FORMSPREE_FORM_ID: ${{ vars.NEXT_PUBLIC_FORMSPREE_FORM_ID }}
               run: pnpm build
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
