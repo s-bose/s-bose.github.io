@@ -28,6 +28,8 @@ jobs:
     # Build job
     build:
         runs-on: ubuntu-latest
+        environment:
+            name: github-pages
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -65,7 +67,7 @@ jobs:
               run: pnpm install --frozen-lockfile
             - name: Build with Next.js
               env:
-                  NEXT_PUBLIC_FORMSPREE_FORM_ID: ${{ vars.NEXT_PUBLIC_FORMSPREE_FORM_ID }}
+                  NEXT_PUBLIC_FORMSPREE_FORM_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_FORM_ID }}
               run: pnpm build
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
