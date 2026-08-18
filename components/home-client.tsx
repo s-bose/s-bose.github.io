@@ -73,7 +73,7 @@ export function HomeClient() {
             {/* Resume download */}
             <Button variant="outline" size="sm" asChild>
               <a
-                href="/data/Resume.pdf"
+                href="/data/resume.pdf"
                 download="Shiladitya Bose - Resume.pdf"
               >
                 <Download className="size-3.5" />
