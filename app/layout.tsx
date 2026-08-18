@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { CalendlyBadge } from "@/components/calendly-badge";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
         >
           {children}
           <ScrollToTop />
+          <CalendlyBadge />
         </ThemeProvider>
       </body>
     </html>
