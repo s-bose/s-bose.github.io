@@ -10,7 +10,7 @@ import path from "path";
 const ROOT = process.cwd();
 const VAULT_DIR = path.join(ROOT, "content/garden");
 const OUTPUT_DIR = path.join(ROOT, "public/garden/_assets");
-const IGNORED_DIR_NAMES = new Set(["templates", "private", ".obsidian", ".git"]);
+const IGNORED_DIR_NAMES = new Set(["templates", "private", "draft", ".obsidian", ".git"]);
 const MARKDOWN_EXTENSIONS = new Set([".md", ".mdx"]);
 
 function walk(dir, out = []) {

@@ -9,7 +9,7 @@ export const ASSET_URL_PREFIX = "/garden/_assets";
 export const MARKDOWN_EXTENSIONS = [".md", ".mdx"] as const;
 
 /** Directory names skipped entirely by the vault walker, matching Quartz's ignorePatterns. */
-export const IGNORED_DIR_NAMES = new Set(["templates", "private", ".obsidian", ".git"]);
+export const IGNORED_DIR_NAMES = new Set(["templates", "private", "draft", ".obsidian", ".git"]);
 
 /** Slugs reserved by static routes — a note that would collide gets suffixed instead. */
 export const RESERVED_SLUGS = new Set(["graph", "rss.xml", "search-index.json", "_assets"]);
